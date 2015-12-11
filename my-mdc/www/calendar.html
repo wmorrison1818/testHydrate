@@ -1,0 +1,387 @@
+<!Doctype html>
+<html lang="us">
+<head>
+    <meta charset="utf-8">
+    <title>Calendar</title>
+
+    <!--CSS PAGES-->
+    <link href="js/datepicker/jquery-ui.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="css/datepicker-custom.css" rel="stylesheet"/>
+    <style>
+        .above{
+        width:96%;
+        }
+        body{
+        font-family:verdana;
+        }
+        h4{
+        font-weight:bold;
+        }
+        #county:option{
+        color:black;
+        }
+        .below{
+        padding:10px 5px 0 5px;
+        margin:auto;
+        }
+        #county > option{
+        color:red;
+        }
+        .confirm{
+        bottom:0;
+        position:fixed;
+        width:100%;
+        margin:0;
+        }
+        .confirm .btn{
+        border-radius:0;
+        }
+        .event a {
+        background-color: #42B373 !important;
+        background-image :none !important;
+        color: #ffffff !important;
+        }
+        .disabled{
+        pointer-events:none;
+        cursor:default;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid above">
+    <!-- Datepicker -->
+    <div class="row">
+        <div id="datepicker"></div>
+    </div>
+</div>
+<div class="container-fluid below">
+    <div class="row">
+        <div class="col-xs-4">
+            <h4>Time of Day</h4>
+        </div>
+        <div class="col-xs-8">
+            <h4>County Hunted</h4>
+        </div>
+    </div>
+    <div class="row tod">
+        <div class="btn-group btn-group-md col-xs-4" role="group">
+            <button type="button" class="btn" id="AM">AM</button>
+            <button type="button" class="btn" id="PM">PM</button>
+        </div>
+        <div class="col-xs-8">
+            <input class="form-control" placeholder="County Hunted"
+                   id="current_county" name="county">
+        </div>
+    </div>
+</div>
+<div class="row confirm btn-group-lg">
+    <button type="button"
+            class="btn btn-primary btn-block"
+            onclick="sendDateTime()">NEXT PAGE
+    </button>
+</div>
+
+<!--JAVASCRIPT CODES-->
+<script src="js/datepicker/external/jquery/jquery.js"></script>
+<script src="js/datepicker/jquery-ui.js"></script>
+<script>
+    $(function() {
+    var availableTags = [
+"Adair                                                              ",
+"Andrew                                                          ",
+"Atchison                                                         ",
+"Audrain                                                          ",
+"Barry                                                              ",
+"Barton                                                            ",
+"Bates                                                              ",
+"Benton                                                           ",
+"Bollinger                                                        ",
+"Boone                                                            ",
+"Buchanan                                                       ",
+"Butler                                                             ",
+"Caldwell                                                         ",
+"Callaway                                                         ",
+"Camden                                                         ",
+"Cape Girardeau                                              ",
+"Carroll                                                            ",
+"Carter                                                             ",
+"Cass                                                               ",
+"Cedar                                                             ",
+"Chariton                                                         ",
+"Christian                                                         ",
+"Clark                                                              ",
+"Clay                                                                ",
+"Clinton                                                           ",
+"Cole                                                               ",
+"Cooper                                                           ",
+"Crawford                                                        ",
+"Dade                                                              ",
+"Dallas                                                             ",
+"Daviess                                                          ",
+"DeKalb                                                           ",
+"Dent                                                               ",
+"Douglas                                                         ",
+"Dunklin                                                          ",
+"Franklin                                                          ",
+"Gasconade                                                     ",
+"Gentry                                                            ",
+"Greene                                                           ",
+"Grundy                                                           ",
+"Harrison                                                         ",
+"Henry                                                             ",
+"Hickory                                                          ",
+"Holt                                                                ",
+"Howard                                                          ",
+"Howell                                                            ",
+"Iron                                                                ",
+"Jackson                                                          ",
+"Jasper                                                            ",
+"Jefferson                                                        ",
+"Johnson                                                         ",
+"Knox                                                              ",
+"Laclede                                                          ",
+"Lafayette                                                        ",
+"Lawrence                                                        ",
+"Lewis                                                              ",
+"Lincoln                                                           ",
+"Linn                                                                ",
+"Livingston                                                      ",
+"Macon                                                            ",
+"Madison                                                         ",
+"Maries                                                            ",
+"Marion                                                           ",
+"McDonald                                                      ",
+"Mercer                                                           ",
+"Miller                                                              ",
+"Mississippi                                                     ",
+"Moniteau                                                       ",
+"Monroe                                                          ",
+"Montgomery                                                  ",
+"Morgan                                                          ",
+"New Madrid                                                   ",
+"Newton                                                          ",
+"Nodaway                                                       ",
+"Oregon                                                          ",
+"Osage                                                            ",
+"Ozark                                                             ",
+"Pemiscot                                                        ",
+"Perry                                                              ",
+"Pettis                                                              ",
+"Phelps                                                            ",
+"Pike                                                                ",
+"Platte                                                             ",
+"Polk                                                                ",
+"Pulaski                                                           ",
+"Putnam                                                          ",
+"Ralls                                                               ",
+"Randolph                                                       ",
+"Ray                                                                 ",
+"Reynolds                                                        ",
+"Ripley                                                             ",
+"Saline                                                             ",
+"Schuyler                                                         ",
+"Scotland                                                         ",
+"Scott                                                              ",
+"Shannon                                                         ",
+"Shelby                                                            ",
+"St. Charles                                                      ",
+"St. Clair                                                          ",
+"St. Francois                                                    ",
+"Ste. Genevieve                                               ",
+"St. Louis                                                         ",
+"St. Louis City                                                  ",
+"Stoddard                                                        ",
+"Stone                                                             ",
+"Sullivan                                                          ",
+"Taney                                                             ",
+"Texas                                                              ",
+"Vernon                                                           ",
+"Warren                                                           ",
+"Washington                                                   ",
+"Wayne                                                            ",
+"Webster                                                         ",
+"Worth                                                            ",
+"Wright                                                            "
+    ];
+    $( "#current_county" ).autocomplete({
+        minLength: 1,
+        source: function(request, response) {
+            var re = $.ui.autocomplete.escapeRegex(request.term);
+            var matcher = new RegExp( "^" + re, "i" );
+            var data = $.grep(availableTags, function(item,index){
+                return matcher.test(item);
+            });
+            response(data);
+        }
+    });
+  });
+</script>
+<script>
+    // Check if today
+    function checkToday(today){
+        var tod = getCurrentTime();
+        if(tod == "AM"){
+            $('.tod').find('#PM').addClass('disabled');
+        }
+        setTOD(tod);
+    }
+
+    // Check TOD
+    function checkTime(selectedDate){
+        enableTime();
+        var recordList = JSON.parse(window.localStorage.getItem("recordList"));
+        for (var i = 0; i < recordList.length; i++){
+            var record = recordList[i];
+            if (record.date == selectedDate){
+                disableTime(record.tod);
+            }
+            setColor(selectedDate);
+        }
+    }
+
+    // Set enabled / disabled colors
+    function setColor(selectedDate){
+        var today = formatDate(new Date());
+        if (today == selectedDate){
+            checkToday(today);
+        } else {
+            if($('.tod').find('#AM').hasClass('disabled')){
+                if($('.tod').find('#PM').hasClass('disabled')){
+
+                } else {
+                    $('.tod').find('#PM').addClass('btn-success');
+                }
+            } else {
+                $('.tod').find('#AM').addClass('btn-success');
+                $('.tod').find('#PM').removeClass('btn-success');
+            }
+        }
+    }
+
+    // Reset TOD
+    function enableTime(){
+        $('.tod').find('#AM').removeClass('disabled');
+        $('.tod').find('#PM').removeClass('disabled');
+    }
+
+    // Disable TOD
+    function disableTime(tod){
+        if(tod == 'AM'){
+            $('.tod').find('#AM').addClass('disabled');
+            $('.tod').find('#AM').removeClass('btn-success');
+        } else if (tod == 'PM'){
+            $('.tod').find('#PM').addClass('disabled');
+            $('.tod').find('#PM').removeClass('btn-success');
+        }
+    }
+
+    // ON PAGE LOAD
+    $(document).ready(function(){
+
+        var today = formatDate(new Date());
+        checkToday(today);
+
+        var eventDates = {};
+        var recordedList = window.localStorage.getItem("recordList");
+        if(recordedList != null && recordedList.length>0){
+            var recordList = JSON.parse(recordedList);
+            for(var i=0; i<recordList.length; i++){
+                var calDate = recordList[i].date;
+                eventDates[new Date(calDate)] = new Date(calDate);
+            }
+        }
+
+        $( "#datepicker" ).datepicker({
+            inline: true,
+            showOn: "button",
+            autoSize: true,
+            changeMonth: true,
+            changeYear: true,
+            maxDate: "0",
+            buttonText: "Choose",
+            showOtherMonths: true,
+            dateFormat: "mm-dd-yy",
+            onSelect: checkTime,
+            beforeShowDay: function(date){
+                var highlight = eventDates[date];
+                if (highlight) {
+                     return [true, 'event', 'highlight'];
+                } else {
+                     return [true, '', ''];
+                }
+            }
+        });
+    });
+
+    // SET TIME OF DAY
+    // Get current time to set current TOD
+    function getCurrentTime(){
+        var d = new Date();
+        var cHours = d.getHours();
+        var tod;
+        if(cHours >=12){
+            tod = "PM";
+        } else {
+            tod = "AM";
+        }
+        return tod;
+    }
+
+    $('.btn-group #AM').click(function(){
+        setTOD('AM');
+    });
+
+    $('.btn-group #PM').click(function(){
+        setTOD('PM');
+    });
+
+    function setTOD(tod){
+        if(tod=="PM"){
+            $('.tod').find('#PM').addClass('btn-success');
+            $('.tod').find('#AM').removeClass('btn-success');
+        } else {
+            $('.tod').find('#AM').addClass('btn-success');
+            $('.tod').find('#PM').removeClass('btn-success');
+        }
+    }
+
+    // FORMAT DATETIME
+    function formatDate(currDate){
+        var currYear = currDate.getFullYear();
+        var currMonth = currDate.getMonth()+1;
+        if(currMonth.toString().length == 1){
+            currMonth = "0"+currMonth;
+        }
+        var currDay = currDate.getDate();
+        if(currDay.toString().length==1){
+            currDay = "0"+currDay;
+        }
+        var cDate = currMonth+"-"+currDay+"-"+currYear;
+        return cDate;
+    }
+
+    // CONFIRM AND STORE DATE, TOD AND COUNTY
+    // MOVE TO NEXT PAGE
+    function sendDateTime(){
+        var county = $('#current_county').val();
+        if($.trim(county)==""){
+            alert("Select County");
+            return;
+        } else {
+            var cTOD = $('.tod').find('.btn-success').attr('id');
+            // DATE FUNCTION
+            var currDate = $("#datepicker").datepicker("getDate");
+            var cDate = formatDate(currDate);
+            window.localStorage.setItem("currDate",cDate);
+            window.localStorage.setItem("currTOD",cTOD);
+            window.localStorage.setItem("county", county);
+            window.open('huntingInfo.html');
+        }
+    }
+
+
+</script>
+</body>
+</html>

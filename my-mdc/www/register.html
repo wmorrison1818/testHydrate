@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+    <!--<link href="file:///android_asset/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="file:///android_asset/js/datepicker/jquery-ui.css" rel="stylesheet">-->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <title>Hello World</title>
+    <style>
+        h1{
+        margin:10px;
+        text-align:center;
+        }
+        .row{
+        margin:0 2px 0 0;
+        }
+        .scroll-div{
+        width:100%;
+        height:400px;
+        overflow-y:auto;
+        }
+        .confirm{
+        bottom:0;
+        position:fixed;
+        width:100%;
+        margin:0;
+        }
+        .confirm .btn{
+        border-radius:0;
+        }
+        .fullwidthbutton{
+        width:50%;
+        }
+        .navbar{
+        background-color:lightgreen;
+        }
+        .automargin{
+        margin-top:auto;
+        margin-bottom:auto;
+        }
+        #add{
+        border-radius:0px;
+        }
+        .add{
+        float:right;
+        margin:2px;
+        margin-bottom:5px;
+        margin-right:5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <h1>Registration Page</h1>
+    </div>
+    <div class="row">
+        <label for="full-name"><h4>Full Name</h4></label>
+        <input type="text" class="form-control" name="full-name" id="full-name"/>
+    </div>
+    <div class="row">
+        <label for="email"><h4>Email Address</h4></label>
+        <input type="text" class="form-control" name="email" id="email"/>
+    </div>
+    <div class="row">
+        <label for="phone"><h4>Phone Number</h4></label>
+        <input type="number" class="form-control" name="phone" id="phone"/>
+    </div>
+</div>
+<div class="row confirm btn-group-lg">
+    <button type="button"
+            class="btn btn-success btn-block"
+            onclick="nextPage()" style="border-radius:0">SUBMIT
+    </button>
+</div>
+
+<script src="js/datepicker/external/jquery/jquery.js"></script>
+<script src="js/datepicker/jquery-ui.js"></script>
+
+<script type="text/javascript">
+            $(document).ready(function(){
+                // SET NAVBAR
+                var county = window.localStorage.getItem("county");
+                var tod = window.localStorage.getItem("currTOD");
+                var date = window.localStorage.getItem("currDate");
+                $('.navbar').find('.current_county').find('h4').text(county);
+                $('.navbar').find('.current_tod').find('h4').text(tod);
+                $('.navbar').find('.current_date').find('h4').text(date);
+
+            });
+
+            // ADD ROW
+            $('#add').click(function(e){
+                //Try to get tbody first with jquery children. works faster!
+                var tbody = $('#myTable').find('.table-body-class');
+
+                //Then if no tbody just select your table
+                var table = tbody.length ? tbody : $('#myTable');
+
+                // Row variable
+                var row = '<tr><td><select class="animal form-control">' +
+                                '<option>Antlered Buck</option>' +
+                                '<option>Does</option>'+
+                                '<option>Fawns</option>'+
+                                '<option>Unknown Deer</option>'+
+                                '<option>Wild Turkey</option>'+
+                                '<option>Covote</option>'+
+                                '<option>Red Fox</option>'+
+                                '<option>Gray Fox</option>'+
+                                '<option>Bobcat</option>'+
+                                '<option>Raccoon</option>'+
+                                '<option>Opossum</option>'+
+                                '<option>Striped Skunk</option>'+
+                                '<option>Badgers</option>'+
+                                '<option>Black Bear</option>'+
+                                '<option>Wild Hog</option>'+
+                            '</select></td>'+
+                            '<td><input type="tel" class="number form-control"></td></tr>';
+
+                //Add row
+                if(tbody.find('tr').length == 0){
+                    tbody.append(row);
+                } else {
+                    tbody.find('tr:first').before(row);
+                }
+            });
+
+            // ONCLICK NEXT
+            function nextPage()
+            {
+                var animalObj = {};
+                var animalList = [];
+                var error = 0;
+                if($('tbody').find('tr').length > 0 ){
+                    $('tbody').find('tr').each(function(index){
+                        var animal = $(this).find('.animal option:selected').html();
+                        for (var i = 0; i < animalList.length; i++){
+                            if (animal == animalList[i].key){
+                                alert('Duplicate entry for ' + animal + '! Please select a different animal');
+                                return;
+                            }
+                        }
+                        var number = $(this).find('.number').val();
+                        if ($.trim(number)=="" || number == 0){
+                            alert("Please enter a valid number for animal: " + animal);
+                            error = 1;
+                        } else {
+                            animalObj = {key:animal, value:number};
+                            animalList.push(animalObj);
+                        }
+                    });
+                    return;
+                    if (error==0 && animalList != null && animalList.length>0){
+                        window.localStorage.setItem("animalList", JSON.stringify(animalList));
+                        window.open("weather.html");
+                    } else {
+                        return;
+                    }
+                } else {
+                    alert('No rows');
+                    window.localStorage.setItem("none","0");
+                    window.open("weather.html");
+                }
+            }
+</script>
+</body>
+</html>
