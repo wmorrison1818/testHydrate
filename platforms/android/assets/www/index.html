@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <title>Login to MDC</title>
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+        
+        <!--EXTERNAL CSS-->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+        <style>
+            body{
+                background-color:#fff000;
+            }
+        .container-fluid{
+            width:100%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .confirm{
+            bottom:0;
+            position:fixed;
+            width:100%;
+            margin:0;
+        }
+        .confirm .btn{
+            border-radius:0;
+            margin:0;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <h1 align="center">MDC BOW HUNTER!</h1>
+            <div class="form-group userInput">
+                <label for="username">User ID</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter User ID">
+                    </div>
+            <div class="form-group selectUser">
+                <label for="selectUser">User ID</label>
+                <select id ="selectUser" class="form-control">
+                    <option>Test</option>
+                </select>
+            </div>
+        </div>
+        <div class="row confirm btn-group-lg" >
+            <button type="button"
+                class="btn btn-success btn-block"
+                onclick="login()">SIGN IN</button>
+            <button type="button"
+                class="btn btn-primary btn-block"
+                onclick="signup()">SIGN UP</button>
+        </div>
+        
+        <!--EXTERNAL JAVASCRIPT-->
+        <script src="js/datepicker/external/jquery/jquery.js"></script>
+        
+        <!--INTERNAL JAVASCRIPT-->
+        <script type="text/javascript" charset="utf-8">
+            var usernameList;
+            
+            // WORKS ON PHONE NOT ON EMULATOR
+            function getMacAddress(){
+                //alert(Android.getMacAddress());
+            }
+        
+        // IF NEW USER BUTTON IS PRESSED
+        function newUser(){
+            // SOME FUNCTION TO GO TO NEW PAGE
+        }
+        
+        // ON PAGE LOAD
+        $(document).ready(function(){
+                          
+                          var recordList = window.localStorage.getItem("recordList");
+                          // alert(JSON.stringify(recordList));
+                          
+                          
+                          
+                          // To remove all data from localStorage
+                          // localStorage.clear();
+                          
+                          // Pre-set JSON usernameList
+                          usernameList = window.localStorage.getItem("usernameList");
+                          
+                          // Check if username item in localStorage exists or not
+                          if(usernameList == null){
+                          $('.selectUser').addClass('hidden');
+                          } else {
+                          // Hide the input text field
+                          $('.userInput').addClass('hidden');
+                          // Parse the usernameList to an array of usernames
+                          var arrayObj = JSON.parse(usernameList);
+                          // Remove any existing options in the select option list
+                          $('#selectUser').find('option').remove();
+                          // Add usernames to the select menu
+                          $.each(arrayObj, function(key, value) {
+                                 $('#selectUser')
+                                 .append($("<option></option>")
+                                         .attr("value",key)
+                                         .text(value));
+                                 });
+                          }
+                          });
+                          
+                          // On Click of Login Button
+                          function login()
+                          {
+                              //alert("UsernameList: " + usernameList);
+                              if(usernameList != null && usernameList.length>0){
+                                  var selectedUser = $("#selectUser option:selected").text();
+                                  window.localStorage.setItem("currentUser",selectedUser);
+                                  window.open('calendar.html');
+                              } else {
+                                  inputUser = document.getElementById('username').value;
+                                  // Add new user to localStorage, if does not exist
+                                  if($.trim(inputUser) != ""){
+                                      // alert("InputUser: " + inputUser);
+                                      // Parse usernameList to array of usernames
+                                      var usernameArray = JSON.parse(usernameList);
+                                      if(usernameArray != null){
+                                          for (var i = 0; i<usernameArray.length; i++){
+                                              if(inputUser == usernameArray[i]){
+                                                  alert("Username: " + inputUser + " already exists");
+                                              } else {
+                                                  usernameArray.push(inputUser);
+                                                  window.localStorage.setItem("usernameList", JSON.stringify(usernameArray));
+                                                  window.localStorage.setItem("currentUser", inputUser);
+                                                  // alert(window.localStorage.getItem("currentUser"));
+                                                  window.open('calendar.html');
+                                              } // end if-else
+                                          } // end for loop
+                                      } else {
+                                          var usernameArray = [];
+                                          usernameArray.push(inputUser);
+                                          window.localStorage.setItem("currentUser", inputUser);
+                                          window.localStorage.setItem("usernameList", JSON.stringify(usernameArray));
+                                          // alert(window.localStorage.getItem("currentUser"));
+                                          window.open('calendar.html');
+                                      } // end else
+                                  }// if (inputUser)
+                                  else {
+                                      alert("Enter username");
+                                  }
+                              } // end if-else (usernameList)
+                          }
+        
+        function signup(){
+            window.open("register.html");
+        }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="js/datepicker/jquery-ui.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <style>
+        .confirm{
+        bottom:0;
+        position:fixed;
+        width:100%;
+        margin:0;
+        }
+        .confirm .btn{
+        border-radius:0;
+        }
+        .fullwidthbutton{
+        width:50%;
+        }
+        .navbar{
+        background-color:lightgreen;
+        }
+        .automargin{
+        margin-top:auto;
+        margin-bottom:auto;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-5 current_county"><h4></h4></div>
+            <div class="col-xs-5 current_date"><h4></h4></div>
+            <div class="col-xs-2 current_tod"><h4></h4></div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-7 automargin">
+            <label for="duration"><h4>Number of hours hunted</h4></label>
+        </div>
+        <div class="col-xs-5 automargin">
+            <input type="tel" min="0" class="form-control" name="hours" id="duration"/>
+        </div>
+    </div>
+    <div class="row hunting">
+        <div class="col-xs-7">
+            <label for="hunting"><h4>Are you currently hunting?</h4></label>
+        </div>
+        <div class="btn-group btn-group-md col-xs-5" role="group" id="hunting">
+            <button type="button" class="btn fullwidthbutton yes">YES</button>
+            <button type="button" class="btn fullwidthbutton no">NO</button>
+        </div>
+    </div>
+    <div class="row animals">
+        <div class="col-xs-7">
+            <label for="animals"><h4>Did you see any animals?</h4></label>
+        </div>
+        <div class="btn-group btn-group-md col-xs-5" role="group" id="animals">
+            <button type="button" class="btn fullwidthbutton yes">YES</button>
+            <button type="button" class="btn fullwidthbutton no">NO</button>
+        </div>
+    </div>
+</div>
+<div class="row confirm btn-group-lg">
+    <button type="button"
+            class="btn btn-primary btn-block"
+            onclick="nextPage()" style="border-radius:0">NEXT PAGE
+    </button>
+</div>
+
+<!--JQUERY-->
+<script src="js/datepicker/external/jquery/jquery.js"></script>
+<script src="js/datepicker/jquery-ui.js"></script>
+<script>
+        $(document).ready(function(){
+            // SET NAVBAR
+            var county = window.localStorage.getItem("county");
+            var tod = window.localStorage.getItem("currTOD");
+            var date = window.localStorage.getItem("currDate");
+
+            $('.navbar').find('.current_county').find('h4').text(county);
+            $('.navbar').find('.current_tod').find('h4').text(tod);
+            $('.navbar').find('.current_date').find('h4').text(date);
+
+
+            $('.hunting .btn-group .yes').trigger('click');
+            $('.animals .btn-group .yes').trigger('click');
+        });
+
+        $('.hunting .btn-group .yes').click(function(){
+            selectButton($(this));
+        });
+
+        $('.animals .btn-group .yes').click(function(){
+            selectButton($(this));
+        });
+
+        $('.hunting .btn-group .no').click(function(){
+            selectButton($(this));
+        });
+
+        $('.animals .btn-group .no').click(function(){
+            selectButton($(this));
+        });
+
+        function selectButton(button){
+            if(button.hasClass('yes')){
+                button.parent('.btn-group').find('.no').removeClass('btn-success');
+            } else if(button.hasClass('no')){
+                button.parent('.btn-group').find('.yes').removeClass('btn-success');
+            }
+            button.addClass('btn-success');
+        }
+
+        function nextPage(){
+            var duration = $('#duration').val();
+            var cHunting = $('#hunting').find('.btn-success').text();
+            var cAnimals = $('#animals').find('.btn-success').text();
+            if ($.isNumeric(duration)){
+                window.localStorage.setItem("duration",duration);
+                window.localStorage.setItem("cHunting", JSON.stringify(cHunting));
+                if(cAnimals=="NO"){
+                    window.localStorage.setItem("none", "0");
+                    window.open("weather.html");
+                } else {
+                    window.localStorage.setItem("none", "1");
+                    window.open("animals.html");
+                }
+            } else{
+                alert("Please enter a valid number for duration");
+            }
+        }
+
+</script>
+</body>
+</html>

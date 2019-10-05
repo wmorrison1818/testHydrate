@@ -1,0 +1,55 @@
+<style>
+		.demoHeaders {
+            margin-top: 2em;
+        }
+        .ui-datepicker {
+            width:auto;
+            font-size: 25px;
+			margin:10px 0 10px 0;
+        }
+        #datepickerbutton{
+            margin:5px;
+            font-size:20px;
+        }
+
+		.ui-datepicker-header{
+			background:none;
+			background-color:green;
+			border:green;			
+		}
+		.ui-datepicker-title select{
+			border-radius:5px;
+			background-color:white;
+			color:black;
+			font-family:calibri light;
+		}
+		.ui-datepicker select.ui-datepicker-month,
+		.ui-datepicker select.ui-datepicker-year{
+			margin:5px;
+		}
+		.ui-state-highlight, 
+		.ui-widget-content .ui-state-highlight, 
+		.ui-widget-header .ui-state-highlight{
+			background:none;
+			background-color:white;
+			border:1px solid green;
+		}
+		.ui-state-active, 
+		.ui-widget-content .ui-state-active, 
+		.ui-widget-header .ui-state-active{
+			background:none;
+			background-color:lightgreen;
+			border:1px solid green;
+			color:green;
+		}
+		.ui-state-hover, 
+		.ui-widget-content .ui-state-hover, 
+		.ui-widget-header .ui-state-hover{
+			background:none;
+			background-color:lightgreen;
+			border:1px solid green;
+			color:green;
+		}
+
+
+</style>

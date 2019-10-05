@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="js/datepicker/jquery-ui.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <style>
+        .textarea {
+        width:100%;
+        height:50%;
+        }
+        .confirm{
+        bottom:0;
+        position:fixed;
+        width:100%;
+        margin:0;
+        }
+        .confirm .btn{
+        border-radius:0;
+        }
+        .navbar{
+        background-color:lightgreen;
+        }
+        label{
+        font-size:16px;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-5 current_county"><h4></h4></div>
+            <div class="col-xs-5 current_date"><h4></h4></div>
+            <div class="col-xs-2 current_tod"><h4></h4></div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="form-group">
+        <label for="note">Note</label>
+        <textarea class="form-control" id="note" rows="6"></textarea>
+    </div>
+    <div class="form-group">
+        <div>
+            <label for="temperature">Temperature</label>
+        </div>
+        <div>
+            <select id="temperature" class="form-control">
+                <option>Very Hot</option>
+                <option>Hot</option>
+                <option>Mild</option>
+                <option>Cold</option>
+                <option>Very Cold</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <label for="precipitation">Precipitation</label>
+        </div>
+        <div>
+            <select id="precipitation" class="form-control">
+                <option>Light Showers</option>
+                <option>Heavy Rain</option>
+                <option>Snow</option>
+                <option>Hail</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <label for="cloud">Cloud</label>
+        </div>
+        <div>
+            <select id="cloud" class="form-control">
+                <option>Cloudy</option>
+                <option>Slight Overcast</option>
+                <option>Clear</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row confirm btn-group-lg">
+    <button type="button"
+            class="btn btn-success btn-block"
+            onclick="saveRecord()" >SAVE RECORD</button>
+</div>
+<script src="js/datepicker/external/jquery/jquery.js"></script>
+<script src="js/datepicker/jquery-ui.js"></script>
+<script>
+        $(document).ready(function(){
+            // SET NAVBAR
+            var county = window.localStorage.getItem("county");
+            var tod = window.localStorage.getItem("currTOD");
+            var date = window.localStorage.getItem("currDate");
+
+            $('.navbar').find('.current_county').find('h4').text(county);
+            $('.navbar').find('.current_tod').find('h4').text(tod);
+            $('.navbar').find('.current_date').find('h4').text(date);
+        });
+
+        // SAVE ENTRY
+        function saveRecord(){
+
+            var recordList = window.localStorage.getItem("recordList");
+            Android.getRecordList(recordList);
+            return;
+
+            var username = window.localStorage.getItem("currentUser");
+            var date = window.localStorage.getItem("currDate");
+            var tod = window.localStorage.getItem("currTOD");
+            var county = window.localStorage.getItem("county");
+            var duration = window.localStorage.getItem("duration");
+            var currHunting = window.localStorage.getItem("cHunting");
+            var animalList = window.localStorage.getItem("animalList");
+            var none = window.localStorage.getItem("none");
+
+            // VALUES FROM THIS PAGE
+            var notes = $('#note').val();
+            var temperature = $('#temperature').val();
+            var precipitation = $('#precipitation option:selected').html();
+            var cloud = $('#cloud option:selected').html();
+
+            // REMOVE VALUES FROM LOCALSTORAGE
+            window.localStorage.removeItem("currentUser");
+            window.localStorage.removeItem("currDate");
+            window.localStorage.removeItem("currTOD");
+            window.localStorage.removeItem("county");
+            window.localStorage.removeItem("duration");
+            window.localStorage.removeItem("cHunting");
+            window.localStorage.removeItem("animalList");
+            window.localStorage.removeItem("none");
+
+            // STORE ALL VARIABLES TO AN OBJECT
+            var userRecord = {
+                username : username,
+                date: date,
+                tod: tod,
+                county: county,
+                duration: duration,
+                currHunting: currHunting,
+                none:none,
+                animalList: animalList,
+                comments: notes,
+                temperature:temperature,
+                precipitation: precipitation,
+                cloudy: cloud
+            }
+
+            // RETRIEVE LIST OF ENTRIES
+            var recordList = window.localStorage.getItem("recordList");
+            Android.getRecordList(recordList);
+            //return;
+            // IF ENTRY LIST IS EMPTY
+            // alert(JSON.stringify(recordList));
+            if(recordList == null){
+                var recordList = [];
+                recordList.push(userRecord);
+                window.localStorage.setItem("recordList",JSON.stringify(recordList));
+            } else {
+                var recordListArray = JSON.parse(recordList);
+                recordListArray.push(userRecord);
+                window.localStorage.setItem("recordList",JSON.stringify(recordListArray));
+            }
+            window.localStorage.removeItem(userRecord);
+
+            alert("Record Saved! You will now be directed back home");
+            window.open("calendar.html");
+        }
+</script>
+</body>
+</html>
