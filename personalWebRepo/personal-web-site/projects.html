@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Fixed Top Navbar Example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+	<style>
+		.yellow{
+			background-color:yellow;
+		}
+	
+		.green{
+			background-color:green;
+		}
+		
+		body{
+			background-color:#11111A;/*#041E40;*/
+		}
+		
+		#topBar{
+			background-color:#E5B91A;
+		}
+		
+		#mainBody{
+			background-color:#C2C2C2;/*#B5B5B5;*/
+		}
+
+	</style>
+    <!-- Fixed navbar -->
+    <nav  id='topBar' class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">William Morrison</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Professional</a></li>
+            <li><a href="#about">Research</a></li>
+            <li><a href="#contact">Projects</a></li>
+            <li><a href="#contact">Education</a></li>
+          </ul>
+        </div>
+      
+      
+    </nav>
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div id='mainBody' class="jumbotron">
+        <h1>William Morrison</h1>
+<p>Over the last few years I have been involved in many endeavors, which show my commitment, hard work, creative thinking, and initiative. Above you will find links to detailed descriptions of these works. I have divided my experiences into categories. Professional experiences describe my work in industry. Research experience largely emphasizes my work in a lab at the University of Missouri. Some of the research work I have done is very practical and may interest those in industry. I have also worked on a number of different projects outside of industry, research, and school which will likely intrigue any potential employer. Finally education discuses relevant course work. Thank you for stopping by, and if you would like to contact me, you can email me at wmmhyc@mail.missouri.edu or see my <a href='https://www.linkedin.com/in/will-morrison-b25861105'>LinkedIn</a> or <a href='https://github.com/wmorrison1818'>GitHub</a>.</p>
+		  </div>
+	</div>
+        
+      </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Will's Projects</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+	<style>
+		.yellow{
+			background-color:yellow;
+		}
+	
+		.green{
+			background-color:green;
+		}
+		
+		body{
+			background-color:#11111A;/*#041E40;*/
+		}
+		
+		#topBar{
+			background-color:#E5B91A;
+		}
+		
+		#mainBody{
+			background-color:#C2C2C2;/*#B5B5B5;*/
+		}
+		
+		#test{
+			background-color:#D1A918;
+		}
+		
+		.vid{
+			display: block;
+    		margin: 0 auto;
+    		width: 67%;
+		}
+		
+		.pic{
+			display: block;
+    		margin: 0 auto;
+			width:67%;
+			height:315px;
+		}
+		
+		.screenShot{
+			margin-left: 17%;
+			width:213px;
+			height:379px;
+		}
+		
+		@media (max-width:769px){
+			.screenShot{
+				margin-left: 2%;
+				text-align:center;
+				margin-top:2%;
+				width:128px;
+				height:227px;
+			}
+			
+			.pic{
+				display: block;
+				margin: 0 auto;
+				width:95%;
+				height:157px;
+			}
+		}
+
+	</style>
+    <!-- Fixed navbar -->
+    <nav  id='topBar' class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">William Morrison</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="professional.html">Professional</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li class="dropdown">
+              <a id='topBar' href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
+              <ul id='test' class="dropdown-menu">
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="hackathons.html">Hackathons</a></li>
+                <li><a href="other.html">Other</a></li>
+              </ul>
+            </li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+      
+      
+    </nav>
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div id='mainBody' class="jumbotron">
+        <h1>Other</h1>
+<p>I have worked on a few other projects that do not fit cleanly into a single category. Do not let the categorization of ‘other’ dampen these projects; in some ways these projects are the most impressive and important. Two of the projects which currently fall into this category are Codex, which is a video game a team and I made, and PiRO, which is an organization I co-founded which helps teach high school students about computer science.</p>
+		  
+		  <h2>Codex</h2>
+<p>My freshmen year of college I made a video game with the video game programming special interest group at Mizzou. I led a team primarily comprised of 2 other freshmen. Codex is a 2D side scroller where the character, Codex, can manipulate the code of his own game. Codex might turn off the gravity, change his color, or infect the AI of his enemies to overcome obstacles and complete a level. Codex was developed using Unity and C#. I learned a great deal about project management and video game development because of Codex.</p>
+		  <img class='pic' src='vidGame.png'>
+		  <h2>iOS SIG Leader</h2>
+<p>My sophomore year of college I led a special interest group which taught my peers iOS development. At our SIG meetings I would go over different aspects of iOS and help members of the SIG develop the apps they wanted to develop. The SIG primarily focused on Swift. I learned how to adequately form curriculums because of the iOS SIG and also how to run small meetings.</p>
+			
+			<h2>PiRO</h2>
+<p>PiRO is an organization I co-founded devoted to teaching high school students computer science education by helping them build the apps they want to build. I co-founded PiRO toward the end of my sophomore year of college because many high schools in Missouri were not even teaching computer science and those that were did not do a good enough job. PiRO encourages students to build what they want to build because I believe programming is best taught through hands on experiences. I also believe that many aspects of engineering can only be taught through hands on experiences. </p>
+<p>Building PiRO was a new experience for me. I had to solve a problem with a far less well-defined solution than might be found in programming. Also I had to do a lot of business work and bureaucracy defeating to get PiRO into a high school. Eventually my co-founder and I got PiRO into a local high school and began work with the high school programming club to build their first website. We taught the students HTML and CSS, but more importantly we helped them design and engineer their website. Although the students had been teaching themselves HTML and CSS for weeks, they struggled to come up with a good design for their website and they struggled to find technologies to build their website. We referred them to a variety of technologies they could use for their website, and we helped them come up with a good design and begin work on their website.</p>
+<p>PiRO is teaching me many lessons. Among these lessons is how to cut through bureaucracy, how to lead large groups of people, how to simply communicate complex ideas, and that I can have a great impact on my community. PiRO also solidifies my ability to lead teams of engineers to build products. PiRO is currently in one high school, but we have plans for expansion.</p>
+
+		  </div>
+	</div>
+        
+      </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

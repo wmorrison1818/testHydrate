@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Will's Apps</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+	<style>
+		.yellow{
+			background-color:yellow;
+		}
+	
+		.green{
+			background-color:green;
+		}
+		
+		body{
+			background-color:#11111A;/*#041E40;*/
+		}
+		
+		#topBar{
+			background-color:#E5B91A;
+		}
+		
+		#mainBody{
+			background-color:#C2C2C2;/*#B5B5B5;*/
+		}
+		
+		#test{
+			background-color:#D1A918;
+		}
+		
+		.vid{
+			display: block;
+    		margin: 0 auto;
+    		width: 67%;
+		}
+		
+		.pic{
+			display: block;
+    		margin: 0 auto;
+			width:67%;
+			height:315px;
+		}
+		
+		.screenShot{
+			margin-left: 17%;
+			width:213px;
+			height:379px;
+		}
+		
+		@media (max-width:769px){
+			.screenShot{
+				margin-left: 2%;
+				text-align:center;
+				margin-top:2%;
+				width:128px;
+				height:227px;
+			}
+			
+			.pic{
+				display: block;
+				margin: 0 auto;
+				width:95%;
+				height:157px;
+			}
+		}
+
+	</style>
+    <!-- Fixed navbar -->
+    <nav  id='topBar' class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">William Morrison</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="professional.html">Professional</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li class="dropdown">
+              <a id='topBar' href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
+              <ul id='test' class="dropdown-menu">
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="hackathons.html">Hackathons</a></li>
+                <li><a href="other.html">Other</a></li>
+              </ul>
+            </li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+      
+      
+    </nav>
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div id='mainBody' class="jumbotron">
+        <h1>Apps</h1>
+<p>Over the last few years I have developed a few apps entirely on my own. I usually build these apps with a desire to help out my community a bit, but also to see how they will be used and how many people will use them.</p> 
+<p>Building apps on my own has taught me many important skills. Building a product start to finish teaches software engineering and design better than any class or seminar. Learning new skills to build apps not only has the direct benefit of new knowledge, but also the added advantage of honing self-teaching skills. I also really enjoy making apps!</p>
+<p>The two apps I have developed on my own so far are Schedule SimplR, an iOS schedule building tool, and Website Village, a mobile website builder and publisher which is a hybrid app. Schedule SimplR is available for iPhone in the App Store and Website Village is available in both the iOS App Store and Android Play Store. </p>
+		  
+		  <h2>Schedule SimplR</h2>
+<p>The first job I ever had was as a lifeguard. One of the most annoying things about my job was the work schedule. The managers who made the schedule would ask me my availability for the next month and I would tell them. However, I would usually be scheduled when I said I could not work, and I struggled to find a replacement.  I noticed this was a problem amongst my coworkers as well, so I asked the managers why they struggled to produce good work schedules. They said they had to make schedules a month in advance and they did not get paid to make the schedules. They claimed making schedules far in advance with so many employee availabilities was really tough. So I decided I would build a schedule maker since none existed as far as I could tell. I spent the winter teaching myself Objective C and iOS development with free online courses, and I spent the next summer building the app. I published the app to the iOS app store in the fall and it had over 1000 downloads in its first year. I learned so much from building the app, Schedule SimplR. Building the app taught me software engineering and mobile development skills. Making an algorithm to schedule employees made me quibble with high-level computer science concepts. Creating the app taught me that, with enough hard work, you could solve any problem in your community. However, perhaps most valuable, learning how to make Schedule SimplR taught me how to teach myself, which is a skill I constantly use even today. View the Schedule SimplR <a href='https://itunes.apple.com/us/app/schedule-simplr/id945262866?ls=1&mt=8'>here</a> in the App Store.</p>		  
+		  <a href='https://itunes.apple.com/us/app/schedule-simplr/id945262866?ls=1&mt=8'><img class='screenShot' src='screenMaybe.png'></a>
+		  <a href='https://itunes.apple.com/us/app/schedule-simplr/id945262866?ls=1&mt=8'><img class='screenShot' src='screenShot5sPP.png'></a>
+		  <h2>Website Village</h2>
+<p>When I was a freshman in college I had many friends who were journalism majors because my college, the University of Missouri, is known for journalism. My friends wanted me to build them a video game and movie review website. I spent winter break teaching myself web development and I built a fully functioned review website. The website was built using HTML, CSS, and JavaScript, and it enabled its users to upload articles in full HTML, which I believed would enable the site to be media rich. As I expected my friends did not fully utilize the site, so I developed the site into something new. Website Village enables any user to upload code in full HTML and CSS to the Internet from his or her iOS or Android device. Website Village is available for both Android and iOS because it is a hybrid app, which means it is developed using HTML, CSS, and JavaScript. Website Village garnered over 100 users in its first few months. Though Website Village is not quite as popular as Schedule SimplR, I largely published the app both to watch how people would use it and to help others learn web development skills. View the Website Village <a href='https://itunes.apple.com/us/app/website-village/id1076484502?ls=1&mt=8'>here</a> in the App Store, <a href='https://play.google.com/store/apps/details?id=com.phonegap.wv'>here</a> in the Play Store, or Website Village’s website <a href='https://websitevillage.firebaseapp.com'>here</a>.</p>			
+		  <a href='https://itunes.apple.com/us/app/website-village/id1076484502?ls=1&mt=8'><img class='screenShot' src='i5s2.png'></a>
+		  <a href='https://itunes.apple.com/us/app/website-village/id1076484502?ls=1&mt=8'><img class='screenShot' src='i5s3.png'></a>
+		  </div>
+	</div>
+        
+      </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

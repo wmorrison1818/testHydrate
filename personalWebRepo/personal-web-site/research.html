@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Will's Research</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+	<style>
+		.yellow{
+			background-color:yellow;
+		}
+	
+		.green{
+			background-color:green;
+		}
+		
+		body{
+			background-color:#11111A;/*#041E40;*/
+		}
+		
+		#topBar{
+			background-color:#E5B91A;
+		}
+		
+		#mainBody{
+			background-color:#C2C2C2;/*#B5B5B5;*/
+		}
+		
+		#test{
+			background-color:#D1A918;
+		}
+		
+		.vid{
+			display: block;
+    		margin: 0 auto;
+    		width: 67%;
+		}
+		
+		.pic{
+			display: block;
+    		margin: 0 auto;
+			width:67%;
+			height:315px;
+		}
+		
+		.screenShot{
+			margin-left: 17%;
+			width:213px;
+			height:379px;
+		}
+		
+		@media (max-width:769px){
+			.screenShot{
+				margin-left: 2%;
+				text-align:center;
+				margin-top:2%;
+				width:128px;
+				height:227px;
+			}
+			
+			.pic{
+				display: block;
+				margin: 0 auto;
+				width:95%;
+				height:157px;
+			}
+		}
+
+	</style>
+    <!-- Fixed navbar -->
+    <nav  id='topBar' class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">William Morrison</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="professional.html">Professional</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li class="dropdown">
+              <a id='topBar' href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
+              <ul id='test' class="dropdown-menu">
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="hackathons.html">Hackathons</a></li>
+                <li><a href="other.html">Other</a></li>
+              </ul>
+            </li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+      
+      
+    </nav>
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div id='mainBody' class="jumbotron">
+        <h1>Research</h1>
+<p> At the beginning of my sophomore year in College I began to get involved in research. I expected to be well behind my peers, however, I quickly found my past mobile development experience gave me a huge advantage over many of my fellow researchers. My skills impressed my peers and my professors, and I quickly found myself leading several important projects. During my time in the lab I have led teams of people from at least 3 different countries, who can speak at least 3 different languages, who vary in age, and who’s level of education vary from undergraduate to graduate.  I have worked on iOS apps, hybrid apps, and web sites. I have worked with organizations like the Missouri Department of Conservation and the University of Missouri Psychology Department. I have worked with people with impressive technical backgrounds and no technical backgrounds. The projects I have worked on utilize front and back end technologies, several different APIs, and even machine learning. </p>
+		  
+		  <h2>Hybrid apps for the Missouri Department of Conservation</h2>
+		  <p>One of the projects I worked on initially was a hybrid app for the Missouri Department of Conservation (MDC). Hybrid apps are apps which are built once and made available on both iOS and Android. The app was the first hybrid app which was developed in our lab, so I decided which technologies we would use to develop the app. We used Phonegap because it was powerful and easy to use. I worked with 2 graduate students on the project, and we finished the app in a few months. The app enabled bow hunters to record the location of animals in the Missouri wilderness which enabled MDC to track animals. I am currently developing a second hybrid app for MDC. The new app tracks fish populations, and also allows for the collection of fish picture data to train a neural network to detect a fish.</p>
+		  <img class='screenShot' src='bowHunt1.png'>
+		  <img class='screenShot' src='bowHunt2.png'>
+		  
+		  	<h2>Shooting Ranges Website for the Missouri Department of Conservation</h2>
+			<p>Shortly after I developed the bow hunting hybrid app, I developed a website which displayed all of MDC’s shooting ranges on a map. The app needed to be developed in a single month’s time. I used the Google Maps API to develop the entire map part of the website while a graduate student handled the back end and the front end surrounding the map. We developed the website in time, and we were enthusiastically thanked by MDC and informed the website it was replacing took 2 years to develop. View the site <a href='http://dslsrv8.cs.missouri.edu/~nc5ff/ShootingRangeWebsite/MDC_Shooting_Range/#'>here.</a></p>
+			<a href='http://dslsrv8.cs.missouri.edu/~nc5ff/ShootingRangeWebsite/MDC_Shooting_Range/#'><img class='pic' src='shootingRange.png'></a>
+			
+			<h2>MCART for the University of Missouri Psychology department</h2>
+			<p>MCART, or Mizzou Configurable Addiction ResearchKit Tool, is an iOS drug addiction research tool built using Swift. MCART utilizes iPhone and Apple Watch sensors to gather data which may be important to drug addiction researchers. MCART also enable drug addiction researchers to build their own surveys from predefined survey modules. MCART utilizes ResearchKit for its front-end and JSON for its back-end. I led a team of graduates and undergraduates to develop the app with University of Missouri Psychology Department. </p>
+			<iframe class='vid' height="315" src="https://www.youtube.com/embed/MAzbF_z_9z8" frameborder="0" allowfullscreen></iframe>
+			<h2>Mood ToolKit for the University of Missouri Psychology department</h2>
+			<p>Mood ToolKit is a project which dramatically improved my design skills while honing my iOS development skills. Mood ToolKit was entered into a competition called the <a href='http://www.moodchallenge.com'>Mood Challenge</a>. Mood ToolKit was selected as 1 of 5 semifinalists. Because Mood ToolKit was a semifinalist, two members of my team got to go to a boot camp at Apple’s head quarters in Cupertino, CA. I was selected to go because I led the development team for Mood ToolKit, while the psychology professor who we developed the app for also went. While at the boot camp I met several Apple engineers and designers. Apple had designers and engineers help my team and our competitors improve the design of our apps. Mood ToolKit is very similar to MCART, but Mood ToolKit focuses on Mood rather than drug addiction. In addition to Mood ToolKit’s configurable mood survey capabilities, it also uses deep learning to analyze survey data and draw correlations between mood, physiology, and context. I learned much about design from Apple, and I significantly improved the design of Mood ToolKit.</p>
+			<iframe class='vid' height="315" src="https://www.youtube.com/embed/42xIPU4RPP8" frameborder="0" allowfullscreen></iframe>
+			<p>While I was improving Mood ToolKit’s design I honed my iOS development skills. I had never spent so much time on the design of an app without considering the difficulty of engineering the design. As a result Mood ToolKit’s design was difficult to engineer, however it was very well designed. Engineering this difficult design honed my development skills. </p>
+			<iframe class='vid' height="315" src="https://www.youtube.com/embed/CntpEdGLG9U" frameborder="0" allowfullscreen></iframe>
+			<p>I learned a lot from the boot camp. Apple’s designers taught me how valuable the user is to considering design, while Apple’s engineers taught me how to build many things using ResearchKit and iOS I never believed I could build. The boot camp was very informative, and I was honored to be the only competitor there without a major title like dean, professor, doctor, or CEO. </p>
+		  	<img class='screenShot' src='MoodToolKitLog.png'>
+		  	<img class='screenShot' src='MoodToolKitResearcher.png'>
+		  	<h2>TigerAware</h2>
+		  	<!-- 
+<img class='screenShot' src='TALaunch.png'>
+		  	<img class='screenShot' src='TAMain.png'>
+ -->
+ 			<p>	TigerAware is a fully configurable data collection app which was built on top of Mood Toolkit. Unlike Mood Toolkit, TigerAware is capable of creating and deploying any kind of survey in addition to utilizing a smart phone’s sensors like the camera or accelerometer. I lead development and direct business strategies for TigerAware. I designed the backend, the iOS frontend, and parts of the web front end.  TigerAware was marketed toward the University of Missouri as an app capable of gaining real time awareness of campus issues after the university had some campus race issues.  TigerAware won the Interdisciplinary Innovations Fund Award from the university for $25k. My work specifically on TigerAware also won an award from the School of Fine Arts for artistic expression and applied design for its UI. </p>
+		  	<img class='screenShot' src='TAYNE.png'>
+		  	<img class='screenShot' src='TAYNT.png'>
+		  </div>
+	</div>
+        
+      </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
